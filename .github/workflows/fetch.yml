@@ -8,7 +8,7 @@ env:
   UNSPLASH_COLLECTION_ID: ${{ vars.UNSPLASH_COLLECTION_ID }}
 
 jobs:
-  dist:
+  fetch:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -24,4 +24,9 @@ jobs:
       - name: Fetch
         run: bash fetch.sh
       - name: Commit and push
-        run: git add -A && git commit -m "update images" && git push origin
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}"
+          git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add -A
+          git commit -m "update images"
+          git push origin
