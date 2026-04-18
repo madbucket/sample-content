@@ -6,11 +6,15 @@ The repository also includes a script to fetch images from a specified Unsplash 
 
 Processed images are stored in the images directory and committed to the repository. On push, the site is automatically built and deployed, exposing the assets via a CDN endpoint.
 
+## Setup
+
+Fetching and building is handled entirely by GitHub workflows. In order to set fetchin up, create a `UNSPLASH_ACCESS_KEY` repository secret and a `UNSPLASH_COLLECTION_ID` variable in the repository settings.
+
+For local development, the same settings can be configured using an `.env` file.
+
 ## Adding Images
 
 In order to add images, follow these steps:
 
-1. Create a `.env` file based on the `.env.example` file
-2. Update the configured collection on [Unsplash](https://unsplash.com)
-3. Run `bash fetch.sh`
-4. Commit and push the added images
+1. Update the configured collection on [Unsplash](https://unsplash.com)
+2. Trigger the `Fetch Images` workflow on GitHub
