@@ -1,0 +1,6 @@
+.env
+*.jpg
+node_modules
+response.json
+public/images
+public/index.html

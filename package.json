@@ -1,0 +1,17 @@
+{
+  "name": "sample-content",
+  "version": "1.0.0",
+  "description": "A sample content repository that serves as CDN for Automad theme demos",
+  "homepage": "https://github.com/madbucket/sample-content#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madbucket/sample-content.git"
+  },
+  "author": "",
+  "main": "optimize.js",
+  "type": "module",
+  "dependencies": {
+    "imagemin": "^7.0.1",
+    "imagemin-webp": "^8.0.0"
+  }
+}
