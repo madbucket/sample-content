@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Sample Content</title>
+		<meta
+			name="description"
+			content="Sample content for theme demos for the Automad CMS"
+		/>
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				text-decoration: none;
+				color: inherit;
+				font-size: 1rem;
+				font-weight: 400;
+				line-height: 1.35;
+			}
+
+			html {
+				--gap: 24px;
+				-webkit-text-size-adjust: 100%;
+				font-size: 16px;
+				font-family: system-ui, sans-serif;
+				overflow-x: hidden;
+				padding: var(--gap);
+				color: hsl(240, 8%, 18%);
+				background-color: hsl(240, 0%, 100%);
+			}
+
+			h2 {
+				color: hsl(240, 12%, 75%);
+			}
+
+			nav {
+				display: flex;
+				flex-direction: column;
+				text-transform: capitalize;
+			}
+
+			nav a {
+				color: hsl(240, 12%, 75%);
+			}
+
+			p {
+				grid-column: span 2;
+				color: hsl(240, 12%, 75%);
+			}
+
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+				gap: var(--gap);
+			}
+
+			.grid + .grid {
+				margin-top: 48px;
+			}
+
+			.card {
+				display: flex;
+				max-width: 100%;
+				justify-content: center;
+				align-items: center;
+				aspect-ratio: 3/4;
+				background-color: hsl(240, 8%, 97%);
+				border-radius: 5px;
+			}
+
+			img {
+				width: 90%;
+				height: 90%;
+				object-fit: contain;
+				transform: translateY(0);
+				transition: transform 0.2s;
+			}
+
+			:hover > img {
+				transform: translateY(-10px);
+			}
+
+			figcaption,
+			figcaption a {
+				padding-top: 5px;
+				line-height: 21px;
+				font-size: 14px;
+				color: hsl(240, 12%, 75%);
+			}
+
+			a:hover {
+				text-decoration: underline;
+				text-underline-offset: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="grid">
+			<div>
+				<h1>Sample Content</h1>
+			</div>
+			<nav>
+				<a
+					href="https://github.com/madbucket/sample-content"
+					target="_blank"
+				>
+					GitHub
+				</a>
+			</nav>
+			<p>
+				This site hosts a small, curated collection of size-optimized
+				images used exclusively as sample content in theme demos for the
+				Automad CMS. The images are sourced from Unsplash and are
+				provided under the terms of the
+				<a href="https://unsplash.com/license" target="_blank">
+					Unsplash
+				</a>
+				license.
+			</p>
+		</div>
+		<main class="grid"></main>
+	</body>
+</html>
