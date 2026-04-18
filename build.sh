@@ -6,6 +6,9 @@ IMAGES_DIR=images
 
 shopt -s nullglob
 
+mkdir -p $PUBLIC_DIR/$IMAGES_DIR 2>/dev/null
+rsync -a --delete --exclude="*.jpg" --exclude="*.json" $IMAGES_DIR $PUBLIC_DIR
+
 files=(./${IMAGES_DIR}/*.json)
 
 gallery=''
@@ -13,9 +16,6 @@ gallery=''
 if ((${#files[@]} == 0)); then
 	echo "No JSON files found"
 else
-	mkdir -p $PUBLIC_DIR/$IMAGES_DIR 2>/dev/null
-	rsync -a $IMAGES_DIR/*.webp $PUBLIC_DIR/$IMAGES_DIR
-
 	for file in "${files[@]}"; do
 		id=$(jq -r '.id' "$file")
 		author=$(jq -r '.author' "$file")
