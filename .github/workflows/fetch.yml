@@ -1,0 +1,27 @@
+name: Fetch Images
+
+on:
+  workflow_dispatch:
+
+env:
+  UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+  UNSPLASH_COLLECTION_ID: ${{ vars.UNSPLASH_COLLECTION_ID }}
+
+jobs:
+  dist:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install
+        run: npm ci
+      - name: Fetch
+        run: bash fetch.sh
+      - name: Commit and push
+        run: git add -A && git commit -m "update images" && git push origin

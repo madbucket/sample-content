@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-. .env
+if [ -f ".env" ]; then
+	. .env
+fi
 
 OUTPUT_DIR=./images
 MAX_HEIGHT=1000

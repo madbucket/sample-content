@@ -3,6 +3,10 @@ name: GitHub Pages
 on:
   workflow_dispatch:
   push:
+  workflow_run:
+    workflows: [Fetch Images]
+    types:
+      - completed
 
 jobs:
   build-deploy:
