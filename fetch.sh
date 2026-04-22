@@ -36,30 +36,30 @@ echo "$response" | jq -c '.[]' | while read -r photo; do
 		continue
 	fi
 
-	raw_url=$(echo "$photo" | jq -r '.urls.raw')
+	rawUrl=$(echo "$photo" | jq -r '.urls.raw')
 	author=$(echo "$photo" | jq -r '.user.name')
 	username=$(echo "$photo" | jq -r '.user.username')
-	profile=$(echo "$photo" | jq -r '.user.links.html')
-	photo_url=$(echo "$photo" | jq -r '.links.html')
-	download_location=$(echo "$photo" | jq -r '.links.download_location')
+	profileUrl=$(echo "$photo" | jq -r '.user.links.html')
+	photoUrl=$(echo "$photo" | jq -r '.links.html')
+	downloadLocation=$(echo "$photo" | jq -r '.links.download_location')
 
-	download_url="${raw_url}&h=${MAX_HEIGHT}&w=${MAX_WIDTH}&fit=max&fm=jpg&q=100"
+	downloadUrl="${rawUrl}&h=${MAX_HEIGHT}&w=${MAX_WIDTH}&fit=max&fm=jpg&q=100"
 
 	echo "Downloading $id..."
 
 	# Track download (per Unsplash API guidelines)
-	curl -s "${download_location}?client_id=${UNSPLASH_ACCESS_KEY}" >/dev/null
+	curl -s "${downloadLocation}?client_id=${UNSPLASH_ACCESS_KEY}" >/dev/null
 
-	curl -fL "$download_url" -o "$OUTPUT_DIR/$id.jpg"
+	curl -fL "$downloadUrl" -o "$OUTPUT_DIR/$id.jpg"
 
 	cat >"$OUTPUT_DIR/$id.json" <<EOF
 {
   "id": "$id",
   "author": "$author",
   "username": "$username",
-  "profile": "$profile",
-  "unsplash_url": "$photo_url",
-  "downloaded_at": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+  "profileUrl": "$profileUrl",
+  "photoUrl": "$photoUrl",
+  "downloadedAt": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 }
 EOF
 	sleep 0.3

@@ -19,8 +19,8 @@ else
 	for file in "${files[@]}"; do
 		id=$(jq -r '.id' "$file")
 		author=$(jq -r '.author' "$file")
-		profile=$(jq -r '.profile' "$file")
-		unsplash=$(jq -r '.unsplash_url' "$file")
+		profileUrl=$(jq -r '.profileUrl' "$file")
+		photoUrl=$(jq -r '.photoUrl' "$file")
 		image=${IMAGES_DIR}/${id}.webp
 
 		read -r -d '' item <<-EOF
@@ -34,8 +34,8 @@ else
 					<img src="${image}" /> 
 				</a>
 				<figcaption>
-					by <a href="$profile" target="_blank">$author</a> on 
-					<a href="$unsplash" target="_blank">Unsplash</a> 
+					by <a href="$profileUrl" target="_blank">$author</a> on 
+					<a href="$photoUrl" target="_blank">Unsplash</a> 
 				</figcaption>
 			</figure>
 		EOF
